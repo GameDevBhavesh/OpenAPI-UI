@@ -258,11 +258,13 @@ class _RequestMakerState extends State<RequestMaker> {
             Row(
               children: [
                 Expanded(
-                  child: TextField(
-                    controller: _urlController,
-                    decoration: const InputDecoration(
-                      labelText: 'Request URL',
-                      border: OutlineInputBorder(),
+                  child: ExcludeSemantics(
+                    child: TextField(
+                      controller: _urlController,
+                      decoration: const InputDecoration(
+                        labelText: 'Request URL',
+                        border: OutlineInputBorder(),
+                      ),
                     ),
                   ),
                 ),
@@ -338,21 +340,25 @@ class _RequestMakerState extends State<RequestMaker> {
               return Row(
                 children: [
                   Expanded(
-                    child: TextField(
-                      controller: headerEntry.keyController,
-                      decoration: const InputDecoration(
-                        labelText: 'Key',
-                        border: OutlineInputBorder(),
+                    child: ExcludeSemantics(
+                      child: TextField(
+                        controller: headerEntry.keyController,
+                        decoration: const InputDecoration(
+                          labelText: 'Key',
+                          border: OutlineInputBorder(),
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: TextField(
-                      controller: headerEntry.valueController,
-                      decoration: const InputDecoration(
-                        labelText: 'Value',
-                        border: OutlineInputBorder(),
+                    child: ExcludeSemantics(
+                      child: TextField(
+                        controller: headerEntry.valueController,
+                        decoration: const InputDecoration(
+                          labelText: 'Value',
+                          border: OutlineInputBorder(),
+                        ),
                       ),
                     ),
                   ),
@@ -362,7 +368,7 @@ class _RequestMakerState extends State<RequestMaker> {
                   ),
                 ],
               );
-            }).toList(),
+            }),
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: _addHeaderRow,
@@ -382,9 +388,11 @@ class _RequestMakerState extends State<RequestMaker> {
               child: SingleChildScrollView(
                 child: CodeTheme(
                   data: CodeThemeData(styles: githubTheme),
-                  child: CodeField(
-                    controller: _codeController,
-                    textStyle: const TextStyle(fontFamily: 'monospace'),
+                  child: ExcludeSemantics(
+                    child: CodeField(
+                      controller: _codeController,
+                      textStyle: const TextStyle(fontFamily: 'monospace'),
+                    ),
                   ),
                 ),
               ),
@@ -410,24 +418,3 @@ class HeaderEntry {
 
   HeaderEntry({required this.keyController, required this.valueController});
 }
-
-// /// Displays the final HTTP response (or error) in a scrollable text box
-// class ResponseViewerWidget extends StatelessWidget {
-//   final String response;
-
-//   const ResponseViewerWidget({super.key, required this.response});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.all(16),
-//       color: Colors.black12,
-//       child: SingleChildScrollView(
-//         child: Text(
-//           response,
-//           style: const TextStyle(fontFamily: 'Courier', fontSize: 14),
-//         ),
-//       ),
-//     );
-//   }
-// }

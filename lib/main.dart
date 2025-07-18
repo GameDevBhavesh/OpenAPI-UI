@@ -133,7 +133,6 @@ class _OpenApiMainScreenState extends State<OpenApiMainScreen> {
                     },
                   ),
                   VerticalDivider(width: 1),
-                  // Main panel: Request Builder and Response Viewer
                   Expanded(
                     child: Column(
                       children: [
